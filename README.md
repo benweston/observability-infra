@@ -1,4 +1,4 @@
-# Observability Infra
+# Observability - Infra
 
 <div align="justify">
 
