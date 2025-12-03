@@ -1,8 +1,7 @@
 ########################################
-# Base ignores (macOS, editors, shells)
+# MacOS
 ########################################
 
-# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -22,7 +21,20 @@ Temporary Items
 .apdisk
 *.icloud
 
+########################################
+# SSH
+########################################
+
+**/.ssh/id_rsa
+**/.ssh/id_ecdsa
+**/.ssh/id_ed25519
+**/.ssh/id_*.pub
+**/.ssh/known_hosts
+
+########################################
 # Vim
+########################################
+
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -33,24 +45,10 @@ Sessionx.vim
 *~
 tags
 
-# Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-sftp-config.json
-sftp-config-alt*.json
-Package Control.*
-oscrypto-ca-bundle.crt
-bh_unicode_properties.cache
-GitHub.sublime-settings
-
-# SSH keys (never commit)
-**/.ssh/id_*
-**/.ssh/*_id_*
-**/.ssh/known_hosts
-
+########################################
 # Zsh
+########################################
+
 *.zwc
 *.zwc.old
 *zcompdump*
@@ -61,60 +59,66 @@ GitHub.sublime-settings
 .zinit_lstupd
 zsdoc/data
 .directory_history
-.venv
+.venv/
 /tests/_output/*
 !/tests/_output/.gitkeep
+
+########################################
+# Sublime Text
+########################################
+
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+sftp-config.json
+sftp-config-alt*.json
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+oscrypto-ca-bundle.crt
+bh_unicode_properties.cache
+GitHub.sublime-settings
 
 ########################################
 # Terraform / IaC
 ########################################
 
-# Local Terraform directories
+# Local Terraform working directories (recursive)
 **/.terraform/*
-.terraform.lock.hcl
+
+# State files
 terraform.tfstate
 terraform.tfstate.*
-*.tfplan
-tfplan
-*tfplan*
+
+# Variable files
 *.tfvars
 *.tfvars.json
 
-# Terraform crash logs
+# Plan files (never commit these)
+*.tfplan
+*.tfplan.*
+*.plan
+*.plan.*
+
+# Crash logs
 crash.log
 crash.*.log
 
-# Override files
+# Override mechanism (local-only)
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Terraform CLI config
+# CLI configuration (machine-local)
 .terraformrc
 terraform.rc
 
-########################################
-# Kubernetes / Helm
-########################################
-
-# Helm chart build output
-charts/**/charts
-charts/**/tmpcharts
-charts/**/artifacts
-*.tgz
-
-# Helm release render output
-helm-output/
-helm-temp/
-
-# Kustomize build output
-kustomize-build/
-*.patch.yaml
-
-# Generated Kubernetes resources
-manifests-generated/
-*.generated.yaml
+# Optional: Local provider/plugin caches
+.terraform.d/plugins/
 
 ########################################
 # Observability stack data folders
@@ -131,10 +135,6 @@ grafana/data/
 grafana/plugins/
 grafana/log/
 
-# Loki data
-loki/
-loki-data/
-
 # Fluentd / Fluent Bit local logs
 fluentd/log/
 fluentbit/log/
@@ -145,19 +145,6 @@ opensearch-data/
 
 # Jaeger backend local data
 jaeger-data/
-
-########################################
-# Docker / Containers
-########################################
-
-# Docker build cache
-docker-data/
-docker-cache/
-.docker/
-
-# Local compose override files
-docker-compose.override.yml
-docker-compose.local.yml
 
 ########################################
 # General temp / build
